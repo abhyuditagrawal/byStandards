@@ -125,6 +125,27 @@
 
     </style>
 
+<script>
+    function searchProducts() {
+        var input, filter, products, card, title, i, txtValue;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        products = document.getElementsByClassName('product-card');
+
+        for (i = 0; i < products.length; i++) {
+            card = products[i];
+            title = card.querySelector('.card-title');
+            txtValue = title.textContent || title.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        }
+    }
+</script>
+
+
 </head>
 
 <body>
@@ -143,19 +164,25 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#products">Products</a>
+                            <a class="nav-link" href="#products" style="margin-top: 5px;">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#about">About Us</a>
+                            <a class="nav-link" href="#about" style="margin-top: 5px;">About Us</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#mission">Mission</a>
+                            <a class="nav-link" href="#mission" style="margin-top: 5px;">Mission</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#contact">Contact</a>
+                            <a class="nav-link" href="#contact" style="margin-top: 5px;">Contact</a>
                         </li>
+                        <li><form class="form-inline my-2 my-lg-0 ml-auto">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search Products" aria-label="Search" id="searchInput" style="margin-top: 8px;" >
+                        
+                    </li>
+                    <li><a class="nav-link" href="#products"><button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="searchProducts()">Search</button></a></li></form>
+
                     </ul>
                 </div>
             </div>
